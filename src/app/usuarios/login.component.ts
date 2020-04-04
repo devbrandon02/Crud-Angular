@@ -19,7 +19,13 @@ export class LoginComponent implements OnInit {
 
    }
 
-  ngOnInit(): void {
+  ngOnInit(){
+
+    if(this.loginService.Autenticado()){
+      Swal.fire('Ya estas autenticado')
+      this.rutas.navigate(['/carros']);
+
+    }
   }
 
   login():void{
@@ -37,11 +43,28 @@ export class LoginComponent implements OnInit {
 
     }
     this.loginService.login(this.usuario).subscribe(response => {
-
       console.log(response);
-      this.rutas.navigate(['/carros']);
-      Swal.fire('Login', `Bienvenido ${response.username}, has iniciado sesion con exito`)
 
-    })
+      this.loginService.guardarUsuario(response.access_token);
+      this.loginService.guardarToken(response.access_token);
+
+      let usuario = this.loginService.usuario;
+      this.rutas.navigate(['/carros']);
+      Swal.fire('Login', `Bienvenido ${usuario.username}, has iniciado sesion con exito`)
+
+    }, err => {
+        if(err = 400){
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario o Contraseña incorrecta!',
+          })
+
+
+        }
+
+    }
+    );
   }
 }
