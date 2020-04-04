@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "carros-app"
+    }
+  },
+  "defaultProject": "carros-app",
+  "cli": {
+    "analytics": false
+  }
 }

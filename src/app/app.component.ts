@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'carros-app';
+  titulo = 'Registro de Carros';
+  constructor() {
+  }
+  
 }

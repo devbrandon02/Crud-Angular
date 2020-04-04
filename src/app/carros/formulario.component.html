@@ -1,0 +1,45 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body">
+        <form>
+            <div class="form-group row">
+                <label for="color" class="color-form-label col sm-col-2">Color:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="carro.color" name="color">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="marca" class="color-form-label col sm-col-2">Marca:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="carro.marca" name="marca">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="modelo" class="color-form-label col sm-col-2">Modelo:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="carro.modelo" name="modelo">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="placa" class="color-form-label col sm-col-2">Placa:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="carro.placa" name="placa">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary" role="button" (click)="crearCarros()" *ngIf="!carro.id else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+
+                        <button type="submit" class="btn btn-primary" (click)="actualizarCarros()" role=" button ">Editar</button>
+
+                    </ng-template>
+                </div>
+
+            </div>
+        </form>
+    </div>
